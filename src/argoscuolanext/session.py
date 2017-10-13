@@ -134,7 +134,10 @@ class Session:
             raise NotLoggedInError()
 
         url = self.rest_api_url + method
-
+        if argu == None:
+            datGiorno = datetime.datetime.now().strftime("%Y-%m-%d")
+        else:
+            datGiorno = argu
         r = requests.get(
             url=url,
             headers={
@@ -148,7 +151,7 @@ class Session:
             },
             data={
                 "_dc": round(microtime(true) * 1000),
-                "datGiorno" = argu if argu else datetime.datetime.now().strftime("%Y-%m-%d")
+                "datGiorno" = datGiorno
             }
         )
 
