@@ -23,7 +23,7 @@
 
 import json
 import re
-import datetime
+from datetime import datetime
 from json.decoder import JSONDecodeError
 from urllib.parse import quote_plus
 import time
