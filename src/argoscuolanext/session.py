@@ -55,7 +55,7 @@ class Session:
         self.schoolCode = None
         self.token = None
 
-    def login(self, schoolCode: str=None, username: str=None, password: str=None, no_info=false):
+    def login(self, schoolCode: str=None, username: str=None, password: str=None, no_info=False):
         """
         Login to ArgoScuolaNext
         :param schoolCode: Ministerial school code
@@ -129,15 +129,11 @@ class Session:
         self.token = None
         return True
 
-    def _request(self, method=None, argu=None):
+    def _request(self, method=None, argu=datetime.datetime.now().strftime("%Y-%m-%d")):
         if not self.logged_in:
             raise NotLoggedInError()
 
         url = self.rest_api_url + method
-        if argu == None:
-            datGiorno = datetime.datetime.now().strftime("%Y-%m-%d")
-        else:
-            datGiorno = argu
         r = requests.get(
             url=url,
             headers={
@@ -151,7 +147,7 @@ class Session:
             },
             data={
                 "_dc": round(microtime(true) * 1000),
-                "datGiorno" = datGiorno
+                "datGiorno" = argu
             }
         )
 
