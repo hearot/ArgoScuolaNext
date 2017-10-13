@@ -33,5 +33,5 @@ setup(
     url='https://github.com/hearot/ArgoScuolaNext-Python',
     download_url='https://github.com/hearot/ArgoScuolaNext-Python/archive/v0.0.1.tar.gz',
     keywords=['argoscuolanext', 'python', 'school' 'api', 'rest'],
-    classifiers=[],
+    classifiers=[]
 )
