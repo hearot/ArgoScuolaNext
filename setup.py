@@ -26,7 +26,7 @@ setup(
     name='argoscuolanext',
     packages=['argoscuolanext'],
     package_dir={'': 'src'},
-    version='0.1',
+    version='0.2',
     description='ArgoScuolaNext Python API',
     author='Gabriel Hearot',
     author_email='gabriel@hearot.it',
