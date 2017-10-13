@@ -26,12 +26,12 @@ setup(
     name='argoscuolanext',
     packages=['argoscuolanext'],
     package_dir={'': 'src'},
-    version='0.3',
+    version='0.3.1',
     description='ArgoScuolaNext Python API',
     author='Gabriel Hearot',
     author_email='gabriel@hearot.it',
     url='https://github.com/hearot/ArgoScuolaNext-Python',
-    download_url='https://github.com/hearot/ArgoScuolaNext-Python/archive/v0.3.tar.gz',
+    download_url='https://github.com/hearot/ArgoScuolaNext-Python/archive/v0.3.1.tar.gz',
     keywords=['argoscuolanext', 'python', 'school' 'api', 'rest'],
     classifiers=[]
 )
