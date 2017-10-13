@@ -147,7 +147,7 @@ class Session:
             },
             data={
                 "_dc": round(microtime(true) * 1000),
-                "datGiorno" = argu
+                "datGiorno": argu
             }
         )
 
