@@ -23,10 +23,9 @@
 
 import json
 import re
-from datetime import datetime
+import datetime
 from json.decoder import JSONDecodeError
 from urllib.parse import quote_plus
-import datetime
 import time
 
 import requests
