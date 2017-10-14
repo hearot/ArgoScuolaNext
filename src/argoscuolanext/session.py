@@ -45,75 +45,62 @@ class Session:
 
     def __init__(self):
         self.logged_in = False
-        self.first_name = None
-        self.last_name = None
-        self.id = None
-
         self.username = None
         self.password = None
         self.schoolCode = None
         self.token = None
-
-    def login(self, schoolCode: str=None, username: str=None, password: str=None, no_info=False):
+    def login(self, schoolCode: str=None, username: str=None, password=None):
         """
         Login to ArgoScuolaNext
         :param schoolCode: Ministerial school code
         :param username: ArgoScuolaNext username
         :param password: ArgoScuolaNext password
-        :param no_info: If you want to get infos about the user
         :type schoolCode: bool
         :type username: str
         :type password: str
-        :type no_info: bool
         :return: Info about the user
         :rtype: dict
         """
-
         r = requests.get(
             url=self.rest_api_url + "login",
             headers={
                 "x-key-app": self.argo_key,
                 "x-version": self.argo_version,
-                "user-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36",
-                "x-cod-min": schoolCode if schoolCode else self.schoolCode,
-                "x-user-id": username if username else self.username,
-                "x-pwd": password if username else self.password,
-                "Content-Type": "application/json",
+                "user-agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36",
+                "x-cod-min": schoolCode,
+                "x-user-id": username,
+                "x-pwd": password
             },
             data={
                 "_dc": round(time.time() * 1000)
             }
         )
-
         if r.status_code != requests.codes.ok:
             raise AuthenticationFailedError()
-
-        result = r.json()
+        result = json.loads(r.text)
         self.logged_in = True
         self.token = result['token']
-        self.username = username if username else self.username
-        self.password = password if username else self.password
-        self.schoolCode = schoolCode if schoolCode else self.schoolCode
-
-        if not no_info:
-            j = requests.get(
-                url=self.rest_api_url + "schede",
-                headers={
-                    "x-key-app": self.argo_key,
-                    "x-version": self.argo_version,
-                    "user-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36",
-                    "x-auth-token": self.token
-                },
-                data={
-                    "_dc": round(time.time() * 1000)
-                }
-            )
-            if j.status_code != requests.codes.ok:
-                raise AuthenticationFailedError()
-
-            jr = j.json()
-            for (f, j) in jr:
-                setattr(self, f, j)
+        self.username = username
+        self.password = password
+        self.schoolCode = schoolCode
+        j = requests.get(
+            url=self.rest_api_url + "schede",
+            headers={
+                "x-key-app": self.argo_key,
+                "x-version": self.argo_version,
+                "user-agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36",
+                "x-cod-min": schoolCode,
+                "x-auth-token": self.token
+            },
+            data={
+                "_dc": round(time.time() * 1000)
+            }
+        )
+        if j.status_code != requests.codes.ok:
+            raise AuthenticationFailedError()
+        jr = json.loads(j.text)
+        for f, j in jr[0].items():
+            setattr(self, f, j)
         return jr
 
     def logout(self):
@@ -123,7 +110,10 @@ class Session:
         :rtype: bool
         """
         self.logged_in = False
-        self.username = None
+        self.username = Nonejr = j.json()
+        for (f, j) in jr:
+            setattr(self, f, j)
+        return jr
         self.password = None
         self.token = None
         return True
@@ -138,14 +128,15 @@ class Session:
             headers={
                 "x-key-app": self.argo_key,
                 "x-version": self.argo_version,
-                "user-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36",
+                "user-agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36",
                 "x-auth-token": self.token,
+                "x-cod-min": self.schoolCode,
                 "x-prg-alunno": self.prgAlunno,
                 "x-prg-scheda": self.prgScheda,
                 "x-prg-scuola": self.prgScuola
             },
             data={
-                "_dc": round(microtime(true) * 1000),
+                "_dc": round(time.time() * 1000),
                 "datGiorno": argu
             }
         )
@@ -153,10 +144,9 @@ class Session:
         if r.status_code != requests.codes.ok:
             raise AuthenticationFailedError()
         try:
-            rk = r.json()
-            return rk
+            return json.loads(r.text)
         except JSONDecodeError:
-            return rk.text
+            return r.text
     def assenze(self):
         """
         Get the student's absences
