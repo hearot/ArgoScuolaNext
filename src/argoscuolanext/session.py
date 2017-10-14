@@ -23,7 +23,7 @@
 
 import json
 import re
-from datetime import datetime
+import datetime
 from json.decoder import JSONDecodeError
 from urllib.parse import quote_plus
 import time
@@ -128,7 +128,7 @@ class Session:
         self.token = None
         return True
 
-    def _request(self, method=None, argu=datetime.now().strftime("%Y-%m-%d")):
+    def _request(self, method=None, argu=datetime.datetime.now().strftime("%Y-%m-%d")):
         if not self.logged_in:
             raise NotLoggedInError()
 
