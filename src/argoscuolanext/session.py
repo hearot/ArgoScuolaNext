@@ -71,7 +71,7 @@ class Session:
                 "x-user-id": username,
                 "x-pwd": password
             },
-            data={
+            params={
                 "_dc": round(time.time() * 1000)
             }
         )
@@ -92,7 +92,7 @@ class Session:
                 "x-cod-min": schoolCode,
                 "x-auth-token": self.token
             },
-            data={
+            params={
                 "_dc": round(time.time() * 1000)
             }
         )
@@ -122,6 +122,8 @@ class Session:
         if not self.logged_in:
             raise NotLoggedInError()
 
+        if argu is None:
+            argu = datetime.datetime.now().strftime("%Y-%m-%d")
         url = self.rest_api_url + method
         r = requests.get(
             url=url,
@@ -135,7 +137,7 @@ class Session:
                 "x-prg-scheda": self.prgScheda,
                 "x-prg-scuola": self.prgScuola
             },
-            data={
+            params={
                 "_dc": round(time.time() * 1000),
                 "datGiorno": argu
             }
