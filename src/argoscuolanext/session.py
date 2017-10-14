@@ -81,7 +81,7 @@ class Session:
                 "Content-Type": "application/json",
             },
             data={
-                "_dc": round(microtime(true) * 1000)
+                "_dc": round(time.time() * 1000)
             }
         )
 
@@ -105,7 +105,7 @@ class Session:
                     "x-auth-token": self.token
                 },
                 data={
-                    "_dc": round(microtime(true) * 1000)
+                    "_dc": round(time.time() * 1000)
                 }
             )
             if j.status_code != requests.codes.ok:
