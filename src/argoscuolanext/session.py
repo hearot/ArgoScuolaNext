@@ -49,6 +49,7 @@ class Session:
         self.password = None
         self.schoolCode = None
         self.token = None
+
     def login(self, schoolCode: str=None, username: str=None, password=None):
         """
         Login to ArgoScuolaNext
@@ -146,6 +147,7 @@ class Session:
             return json.loads(r.text)
         except JSONDecodeError:
             return r.text
+
     def assenze(self):
         """
         Get the student's absences
@@ -153,6 +155,7 @@ class Session:
         :rtype: dict
         """
         return self._request("assenze")
+
     def oggi(self, date=None):
         """
         Get what's happening today
@@ -160,6 +163,7 @@ class Session:
         :rtype: dict
         """
         return self._request("oggi", date)
+
     def notedisciplinari(self):
         """
         Get the student's annotations
@@ -167,6 +171,7 @@ class Session:
         :rtype: dict
         """
         return self._request("notedisciplinari")
+
     def votigiornalieri(self):
         """
         Get the student's marks
@@ -174,6 +179,7 @@ class Session:
         :rtype dict
         """
         return self._request("votigiornalieri")
+
     def votiscrutinio(self):
         """
         Get the final student's marks
@@ -181,6 +187,7 @@ class Session:
         :rtype dict
         """
         return self._request("votiscrutinio")
+
     def compiti(self):
         """
         Get the student's homeworks
@@ -188,6 +195,7 @@ class Session:
         :rtype dict
         """
         return self._request("compiti")
+
     def argomenti(self):
         """
         Get what a student has done
@@ -195,6 +203,7 @@ class Session:
         :rtype dict
         """
         return self._request("argomenti")
+        
     def promemoria(self):
         """
         Get the student's notes
@@ -202,6 +211,7 @@ class Session:
         :rtype dict
         """
         return self._request("promemoria")
+
     def orario(self):
         """
         Get the student's timetable
@@ -209,6 +219,7 @@ class Session:
         :rtype dict
         """
         return self._request("orario")
+
     def docenticlasse(self):
         """
         Get the student's teachers
