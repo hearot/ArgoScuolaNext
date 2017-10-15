@@ -35,6 +35,7 @@ from .errors import AuthenticationFailedError, NotLoggedInError
 
 
 class Session:
+
     """
     Main session object
     """
@@ -203,7 +204,7 @@ class Session:
         :rtype dict
         """
         return self._request("argomenti")
-        
+
     def promemoria(self):
         """
         Get the student's notes
