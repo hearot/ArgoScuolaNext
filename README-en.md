@@ -1,7 +1,7 @@
 # ArgoScuolaNext APIs
 Client that uses ArgoScuolaNext APIs to manage and view your informations on it.
 
-[Italian description of the client][README.md]
+[Italian description of the client](README.md)
 
 ## Table of Contents
   - [0. Installation](#installation)

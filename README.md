@@ -1,7 +1,7 @@
 # ArgoScuolaNext API
 Programma che utilizza le API di ArgoScuolaNext per gestire e vedere le tue informazioni.
 
-[English description of the client][README-en.md]
+[English description of the client](README-en.md)
 
 ## Tabella dei contenuti
   - [0. Installazione](#installazione)
