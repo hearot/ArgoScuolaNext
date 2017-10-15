@@ -110,10 +110,7 @@ class Session:
         :rtype: bool
         """
         self.logged_in = False
-        self.username = Nonejr = j.json()
-        for (f, j) in jr:
-            setattr(self, f, j)
-        return jr
+        self.username = None
         self.password = None
         self.token = None
         return True
