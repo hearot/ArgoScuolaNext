@@ -7,7 +7,7 @@ Programma che utilizza le API di ArgoScuolaNext per gestire e vedere le tue info
   - [0. Installazione](#installazione)
   - [1. Importare le API](#importare-le-api)
   - [2. Log in](#log-in)
-    - [Cos'è successo oggi?](#oggi)
+    - [Attività della giornata](#attivita-della-giornata)
     - [Assenze](#assenze)
     - [Note disciplinari](#note-disciplinari)
     - [Voti giornalieri](#voti-giornalieri)
@@ -46,7 +46,7 @@ session = argoscuolanext.session()
 session.login("SCHOOL-CODE", "USERNAME", "PASSWORD")
 ```
 
-### Cos'è successo oggi?
+### Attività della giornata
 Puoi richiamare la query `oggi` usando la funzione `session.oggi()`. Puoi, non è obbligatorio, settare anche la data.
 ```python
 import argoscuolanext
