@@ -1,6 +1,8 @@
 # ArgoScuolaNext APIs
 Client that uses ArgoScuolaNext APIs to manage and view your informations on it.
 
+[ArgoScuolaNext APIs in Php](https://github.com/hearot/ArgoScuolaNext)
+
 [Italian description of the client](README.md)
 
 ## Table of Contents
