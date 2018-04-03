@@ -132,9 +132,9 @@ class Session:
                 "user-agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36",
                 "x-auth-token": self.token,
                 "x-cod-min": self.schoolCode,
-                "x-prg-alunno": self.prgAlunno,
-                "x-prg-scheda": self.prgScheda,
-                "x-prg-scuola": self.prgScuola
+                "x-prg-alunno": str(self.prgAlunno),
+                "x-prg-scheda": str(self.prgScheda),
+                "x-prg-scuola": str(self.prgScuola)
             },
             params={
                 "_dc": round(time.time() * 1000),
