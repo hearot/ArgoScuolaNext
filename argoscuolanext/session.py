@@ -198,6 +198,6 @@ class Session:
             :return: The decode REST API response
             :rtype: Dict[Any, Any]
             """
-            return self.__call__(method, date)
+            return self(method, date)
 
         return call_method  # Return the function
