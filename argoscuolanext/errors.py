@@ -1,6 +1,6 @@
 # This file is a part of ArgoScuolaNext Python API
 #
-# Copyright (c) 2017 The ArgoScuolaNext Python API Authors (see AUTHORS)
+# Copyright (c) 2018 The ArgoScuolaNext Python API Authors (see AUTHORS)
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -23,15 +23,11 @@
 
 class AuthenticationFailedError(Exception):
     """
-    Authentication failed error: bad username or password
+    Bad credentials or request.
     """
-    def __init__(self):
-        self.message = "Bad username or password"
 
 
 class NotLoggedInError(Exception):
     """
-    Not logged in error: you must logged in to use this method
+    The user is not logged in.
     """
-    def __init__(self):
-        self.message = "You must logged in to use this method."

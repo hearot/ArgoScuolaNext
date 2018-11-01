@@ -1,4 +1,5 @@
 # ArgoScuolaNext APIs
+
 Client that uses ArgoScuolaNext APIs to manage and view your informations on it.
 
 [ArgoScuolaNext APIs in Php](https://github.com/hearot/ArgoScuolaNext)
@@ -8,6 +9,7 @@ Client that uses ArgoScuolaNext APIs to manage and view your informations on it.
 [Italian description of the client](README.md)
 
 ## Table of Contents
+
   - [0. Installation](#installation)
   - [1. Import APIs](#import-apis)
   - [2. Log in](#log-in)
@@ -24,6 +26,7 @@ Client that uses ArgoScuolaNext APIs to manage and view your informations on it.
   - [3. Logout](#log-out)
 
 ## Installation
+
 You can easily install that module using PiP:
 ```bash
 pip install argoscuolanext
@@ -35,40 +38,42 @@ pip install --upgrade argoscuolanext
 ```
 
 ## Import APIs
+
 You must use `import argoscuolanext` to import all argoscuolanext module.
+
 ```python
 import argoscuolanext
-session = argoscuolanext.session()
+...
 ```
 
 ## Log in
 To log in you have to call `login()` function, with `schoolCode`, `username` and `password` as parameters.
+
 ```python
 import argoscuolanext
-session = argoscuolanext.session()
-
-session.login("SCHOOL-CODE", "USERNAME", "PASSWORD")
+session = argoscuolanext.Session("SCHOOL-CODE", "USERNAME", "PASSWORD")
 ```
 
 ### What happened today
+
 You can call `oggi` query by using `session.oggi()` function. You can, it's optional, set the date.
+
 ```python
 import argoscuolanext
-session = argoscuolanext.session()
-
-session.login("SCHOOL-CODE", "USERNAME", "PASSWORD")
+session = argoscuolanext.Session("SCHOOL-CODE", "USERNAME", "PASSWORD")
 print(session.oggi())
 ```
 
 Or using a custom date (yyyy-mm-dd):
+
 ```python
 import argoscuolanext
-session = argoscuolanext.session()
-
-session.login("SCHOOL-CODE", "USERNAME", "PASSWORD")
+session = argoscuolanext.Session("SCHOOL-CODE", "USERNAME", "PASSWORD")
 print(session.oggi("2017-10-14"))
 ```
+
 Example output:
+
 ```json
 {
    "dati":[
@@ -158,16 +163,17 @@ Example output:
 ```
 
 ### Absences
+
 You can call `assenze` query by using `session.assenze()` function.
+
 ```python
 import argoscuolanext
-session = argoscuolanext.session()
-
-session.login("SCHOOL-CODE", "USERNAME", "PASSWORD")
+session = argoscuolanext.Session("SCHOOL-CODE", "USERNAME", "PASSWORD")
 print(session.assenze())
 ```
 
 Example output:
+
 ```json
 {
    "dati":[
@@ -192,16 +198,17 @@ Example output:
 ```
 
 ### Disciplinary notes
+
 You can call `notedisciplinari` query by using `session.notedisciplinari()` function.
+
 ```python
 import argoscuolanext
-session = argoscuolanext.session()
-
-session.login("SCHOOL-CODE", "USERNAME", "PASSWORD")
+session = argoscuolanext.Session("SCHOOL-CODE", "USERNAME", "PASSWORD")
 print(session.notedisciplinari())
 ```
 
 Example output:
+
 ```json
 {
    "dati":[
@@ -223,16 +230,17 @@ Example output:
 ```
 
 ### Daily marks
+
 You can call `votigiornalieri` query by using `session.votigiornalieri()` function.
+
 ```python
 import argoscuolanext
-session = argoscuolanext.session()
-
-session.login("SCHOOL-CODE", "USERNAME", "PASSWORD")
+session = argoscuolanext.Session("SCHOOL-CODE", "USERNAME", "PASSWORD")
 print(session.votigiornalieri())
 ```
 
 Example output:
+
 ```json
 {
    "dati":[
@@ -257,16 +265,17 @@ Example output:
 ```
 
 ### Final marks
+
 You can call `votiscrutinio` query by using `session.votiscrutinio()` function.
+
 ```python
 import argoscuolanext
-session = argoscuolanext.session()
-
-session.login("SCHOOL-CODE", "USERNAME", "PASSWORD")
+session = argoscuolanext.Session("SCHOOL-CODE", "USERNAME", "PASSWORD")
 print(session.votiscrutinio())
 ```
 
 Example output:
+
 ```json
 {
    "dati":[
@@ -293,17 +302,18 @@ Example output:
 }
 ```
 
-### Homeworks
+### Homework
+
 You can call `compiti` query by using `session.compiti()` function.
+
 ```python
 import argoscuolanext
-session = argoscuolanext.session()
-
-session.login("SCHOOL-CODE", "USERNAME", "PASSWORD")
+session = argoscuolanext.Session("SCHOOL-CODE", "USERNAME", "PASSWORD")
 print(session.compiti())
 ```
 
 Example output:
+
 ```json
 {
    "dati":[
@@ -323,16 +333,17 @@ Example output:
 ```
 
 ### Lesson topics
+
 You can call `argomenti` query by using `session.argomenti()` function.
+
 ```python
 import argoscuolanext
-session = argoscuolanext.session()
-
-session.login("SCHOOL-CODE", "USERNAME", "PASSWORD")
+session = argoscuolanext.Session("SCHOOL-CODE", "USERNAME", "PASSWORD")
 print(session.argomenti())
 ```
 
 Example output:
+
 ```json
 {
    "dati":[
@@ -348,20 +359,21 @@ Example output:
          "codMin":"schoolCode\n)"
       }
    ]
-}g
+}
 ```
 
 ### Class reminder
+
 You can call `promemoria` query by using `session.promemoria()` function.
+
 ```python
 import argoscuolanext
-session = argoscuolanext.session()
-
-session.login("SCHOOL-CODE", "USERNAME", "PASSWORD")
+session = argoscuolanext.Session("SCHOOL-CODE", "USERNAME", "PASSWORD")
 print(session.promemoria())
 ```
 
 Example output:
+
 ```json
 {
    "dati":[
@@ -381,16 +393,17 @@ Example output:
 ```
 
 ### Class schedule
+
 You can call `orario` query by using `session.orario()` function.
+
 ```python
 import argoscuolanext
-session = argoscuolanext.session()
-
-session.login("SCHOOL-CODE", "USERNAME", "PASSWORD")
+session = argoscuolanext.Session("SCHOOL-CODE", "USERNAME", "PASSWORD")
 print(session.orario())
 ```
 
 Example output:
+
 ```json
 {
    "dati":[
@@ -413,16 +426,17 @@ Example output:
 ```
 
 ### Teachers
+
 You can call `docenticlasse` query by using `session.docenticlasse()` function.
+
 ```python
 import argoscuolanext
-session = argoscuolanext.session()
-
-session.login("SCHOOL-CODE", "USERNAME", "PASSWORD")
+session = argoscuolanext.Session("SCHOOL-CODE", "USERNAME", "PASSWORD")
 print(session.docenticlasse())
 ```
 
 Example output:
+
 ```json
 {
    "dati":[
@@ -443,10 +457,10 @@ Example output:
 ```
 
 ## Log out
-To log out you have to call `session.logout()` function.
-```python
-import argoscuolanext
-session = argoscuolanext.session()
 
-session.logout("SCHOOL-CODE", "USERNAME", "PASSWORD")
+If you want to logout, you can use the `del` statement:
+
+```python
+...
+del session
 ```

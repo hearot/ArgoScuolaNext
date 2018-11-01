@@ -1,4 +1,5 @@
 # ArgoScuolaNext API
+
 Programma che utilizza le API di ArgoScuolaNext per gestire e vedere le tue informazioni.
 
 [ArgoScuolaNext APIs in Php](https://github.com/hearot/ArgoScuolaNext)
@@ -8,6 +9,7 @@ Programma che utilizza le API di ArgoScuolaNext per gestire e vedere le tue info
 [English description of the client](README-en.md)
 
 ## Tabella dei contenuti
+
   - [0. Installazione](#installazione)
   - [1. Importare le API](#importare-le-api)
   - [2. Log in](#log-in)
@@ -25,49 +27,53 @@ Programma che utilizza le API di ArgoScuolaNext per gestire e vedere le tue info
 
 ## Installazione
 Puoi installare facilmente questo client di ArgoScuolaNext utilizzando PiP:
+
 ```bash
 pip install argoscuolanext
 ```
 
 O, se vuoi aggiornare il modulo:
+
 ```bash
 pip install --upgrade argoscuolanext
 ```
 
 ## Importare le API
+
 Devi usare `import argoscuolanext` per importare tutto il modulo.
 ```python
 import argoscuolanext
-session = argoscuolanext.session()
+...
 ```
 
 ## Log in
+
 Per fare il login dovrai richiamare la funzione `session.login()`, con `schoolCode` (codice della scuola), `username` e `password` come parametri.
+
 ```python
 import argoscuolanext
-session = argoscuolanext.session()
-
-session.login("SCHOOL-CODE", "USERNAME", "PASSWORD")
+session = argoscuolanext.Session("SCHOOL-CODE", "USERNAME", "PASSWORD")
 ```
 
 ### Attività della giornata
+
 Puoi richiamare la query `oggi` usando la funzione `session.oggi()`. Puoi, non è obbligatorio, settare anche la data.
+
 ```python
 import argoscuolanext
-session = argoscuolanext.session()
-
-session.login("SCHOOL-CODE", "USERNAME", "PASSWORD")
+session = argoscuolanext.Session("SCHOOL-CODE", "USERNAME", "PASSWORD")
 print(session.oggi())
 ```
 
 Usando una data diversa (yyyy-mm-dd):
+
 ```python
 import argoscuolanext
-session = argoscuolanext.session()
-
-session.login("SCHOOL-CODE", "USERNAME", "PASSWORD")
+session = argoscuolanext.Session("SCHOOL-CODE", "USERNAME", "PASSWORD")
 print(session.oggi("2017-10-14"))
+
 ```
+
 Output d'esempio:
 ```json
 {
@@ -158,16 +164,17 @@ Output d'esempio:
 ```
 
 ### Assenze
+
 Puoi richiamare la query `assenze` usando la funzione `session.assenze()`.
+
 ```python
 import argoscuolanext
-session = argoscuolanext.session()
-
-session.login("SCHOOL-CODE", "USERNAME", "PASSWORD")
+session = argoscuolanext.Session("SCHOOL-CODE", "USERNAME", "PASSWORD")
 print(session.assenze())
 ```
 
 Output d'esempio:
+
 ```json
 {
    "dati":[
@@ -192,16 +199,17 @@ Output d'esempio:
 ```
 
 ### Note disciplinari
+
 Puoi richiamare la query `notedisciplinari` usando la funzione `session.notedisciplinari()`.
+
 ```python
 import argoscuolanext
-session = argoscuolanext.session()
-
-session.login("SCHOOL-CODE", "USERNAME", "PASSWORD")
+session = argoscuolanext.Session("SCHOOL-CODE", "USERNAME", "PASSWORD")
 print(session.notedisciplinari())
 ```
 
 Output d'esempio:
+
 ```json
 {
    "dati":[
@@ -223,16 +231,17 @@ Output d'esempio:
 ```
 
 ### Voti giornalieri
+
 Puoi richiamare la query `votigiornalieri` usando la funzione `session.votigiornalieri()`.
+
 ```python
 import argoscuolanext
-session = argoscuolanext.session()
-
-session.login("SCHOOL-CODE", "USERNAME", "PASSWORD")
+session = argoscuolanext.Session("SCHOOL-CODE", "USERNAME", "PASSWORD")
 print(session.votigiornalieri())
 ```
 
 Output d'esempio:
+
 ```json
 {
    "dati":[
@@ -257,16 +266,17 @@ Output d'esempio:
 ```
 
 ### Voti scrutinio
+
 Puoi richiamare la query `votiscrutinio` usando la funzione `session.votiscrutinio()`.
+
 ```python
 import argoscuolanext
-session = argoscuolanext.session()
-
-session.login("SCHOOL-CODE", "USERNAME", "PASSWORD")
+session = argoscuolanext.Session("SCHOOL-CODE", "USERNAME", "PASSWORD")
 print(session.votiscrutinio())
 ```
 
 Output d'esempio:
+
 ```json
 {
    "dati":[
@@ -294,16 +304,17 @@ Output d'esempio:
 ```
 
 ### Compiti
+
 Puoi richiamare la query `compiti` usando la funzione `session.compiti()`.
+
 ```python
 import argoscuolanext
-session = argoscuolanext.session()
-
-session.login("SCHOOL-CODE", "USERNAME", "PASSWORD")
+session = argoscuolanext.Session("SCHOOL-CODE", "USERNAME", "PASSWORD")
 print(session.compiti())
 ```
 
 Output d'esempio:
+
 ```json
 {
    "dati":[
@@ -323,16 +334,17 @@ Output d'esempio:
 ```
 
 ### Argomenti delle lezioni
+
 Puoi richiamare la query `argomenti` usando la funzione `session.argomenti()`.
+
 ```python
 import argoscuolanext
-session = argoscuolanext.session()
-
-session.login("SCHOOL-CODE", "USERNAME", "PASSWORD")
+session = argoscuolanext.Session("SCHOOL-CODE", "USERNAME", "PASSWORD")
 print(session.argomenti())
 ```
 
 Output d'esempio:
+
 ```json
 {
    "dati":[
@@ -348,20 +360,21 @@ Output d'esempio:
          "codMin":"schoolCode\n)"
       }
    ]
-}g
+}
 ```
 
 ### Promemoria
+
 Puoi richiamare la query `promemoria` usando la funzione `session.promemoria()`.
+
 ```python
 import argoscuolanext
-session = argoscuolanext.session()
-
-session.login("SCHOOL-CODE", "USERNAME", "PASSWORD")
+session = argoscuolanext.Session("SCHOOL-CODE", "USERNAME", "PASSWORD")
 print(session.promemoria())
 ```
 
 Output d'esempio:
+
 ```json
 {
    "dati":[
@@ -381,16 +394,17 @@ Output d'esempio:
 ```
 
 ### Orario
+
 Puoi richiamare la query `orario` usando la funzione `session.orario()`.
+
 ```python
 import argoscuolanext
-session = argoscuolanext.session()
-
-session.login("SCHOOL-CODE", "USERNAME", "PASSWORD")
+session = argoscuolanext.Session("SCHOOL-CODE", "USERNAME", "PASSWORD")
 print(session.orario())
 ```
 
 Output d'esempio:
+
 ```json
 {
    "dati":[
@@ -413,16 +427,17 @@ Output d'esempio:
 ```
 
 ### Docenti
+
 Puoi richiamare la query `docenticlasse` usando la funzione `session.docenticlasse()`.
+
 ```python
 import argoscuolanext
-session = argoscuolanext.session()
-
-session.login("SCHOOL-CODE", "USERNAME", "PASSWORD")
+session = argoscuolanext.Session("SCHOOL-CODE", "USERNAME", "PASSWORD")
 print(session.docenticlasse())
 ```
 
 Output d'esempio:
+
 ```json
 {
    "dati":[
@@ -443,10 +458,10 @@ Output d'esempio:
 ```
 
 ## Log out
-Per fare il logout devi richiamare la funzione `session.logout()`.
-```python
-import argoscuolanext
-session = argoscuolanext.session()
 
-session.logout("SCHOOL-CODE", "USERNAME", "PASSWORD")
+Per fare il logout puoi semplicemente eliminare l'oggetto usando `del`:
+
+```python
+...
+del session
 ```

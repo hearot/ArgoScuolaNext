@@ -1,6 +1,6 @@
 # This file is a part of ArgoScuolaNext Python API
 #
-# Copyright (c) 2017 The ArgoScuolaNext Python API Authors (see AUTHORS)
+# Copyright (c) 2018 The ArgoScuolaNext Python API Authors (see AUTHORS)
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -20,6 +20,15 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+"""
+A client for the Argoscuolanext REST API.
+"""
 
-from .session import Session
 from .errors import AuthenticationFailedError, NotLoggedInError
+from .session import Session
+
+__author__ = 'Hearot'
+__license__ = 'MIT LICENSE'
+__url__ = 'https://github.com/hearot/Argoscuolanext-Python'
+__package__ = 'argoscuolanext'
+__version__ = '2.0.0'
