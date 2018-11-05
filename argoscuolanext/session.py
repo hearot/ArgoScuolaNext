@@ -105,8 +105,6 @@ class Session:
 
         result = login_request.json()  # Decode the JSON result
 
-        self.logged_in, token = True, result['token']
-
         # Get the information about the user
         information_request = requests.get(
             url=_rest_api_endpoint + "schede",
@@ -115,7 +113,7 @@ class Session:
                 "x-version": _argo_version,
                 "user-agent": _user_agent,
                 "x-cod-min": school_code,
-                "x-auth-token": token
+                "x-auth-token": result['token']
             },
             params={
                 "_dc": round(time.time() * 1000)
@@ -128,6 +126,8 @@ class Session:
 
         information = information_request.json()  # Decode the JSON result
         self.information = information[0]  # Get the user's information
+
+        self.logged_in = True  # The user is logged in
 
     def __call__(self, method: str, date: Optional[datetime.datetime] = datetime.datetime.now().strftime("%Y-%m-%d")) \
             -> Dict[Any, Any]:
