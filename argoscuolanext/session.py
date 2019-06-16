@@ -35,15 +35,27 @@ It represents the Argo Secret Key, used to make requests
 to the REST API endpoint.
 """
 
-_argo_version = "2.0.2"
+_argo_version = "2.0.12"
 """
 It represents the Argo REST API version.
 """
+
+_produttore_software = "ARGO Software s.r.l. - Ragusa"
+
+_app_code = "APF"
+
+"""
+
+Strings containing information about the client, required since version 2.0.12
+
+"""
+
 
 _rest_api_endpoint = "https://www.portaleargo.it/famiglia/api/rest/"
 """
 It represents the REST API endpoint.
 """
+
 
 _user_agent = ("Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 "
                "(KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36")
@@ -89,6 +101,8 @@ class Session:
             headers={
                 "x-key-app": _argo_key,
                 "x-version": _argo_version,
+                "x-produttore-software": _produttore_software,
+                "x-app-code": _app_code,
                 "user-agent": _user_agent,
                 "x-cod-min": school_code,
                 "x-user-id": username,
@@ -111,6 +125,8 @@ class Session:
             headers={
                 "x-key-app": _argo_key,
                 "x-version": _argo_version,
+                "x-produttore-software": _produttore_software,
+                "x-app-code": _app_code,
                 "user-agent": _user_agent,
                 "x-cod-min": school_code,
                 "x-auth-token": result['token']
@@ -156,6 +172,8 @@ class Session:
                 "x-key-app": _argo_key,
                 "x-version": _argo_version,
                 "user-agent": _user_agent,
+                "x-produttore-software": _produttore_software,
+                "x-app-code": _app_code,
                 "x-auth-token": self.information['authToken'],
                 "x-cod-min": self.information['codMin'],
                 "x-prg-alunno": str(self.information['prgAlunno']),
