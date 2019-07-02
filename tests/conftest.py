@@ -20,15 +20,8 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""
-A client for the Argoscuolanext REST API.
-"""
 
-from .errors import AuthenticationFailedError, NotLoggedInError
-from .session import Session
-
-__author__ = 'Hearot'
-__license__ = 'MIT LICENSE'
-__url__ = 'https://github.com/hearot/Argoscuolanext-Python'
-__package__ = 'argoscuolanext'
-__version__ = '2.0.0'
+def pytest_addoption(parser):
+    parser.addoption("--school_code", action="store", default="the ArgoScuolaNext school code")
+    parser.addoption("--username", action="store", default="the ArgoScuolaNext username")
+    parser.addoption("--password", action="store", default="the ArgoScuolaNext password")

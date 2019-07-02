@@ -1,6 +1,6 @@
 # This file is a part of ArgoScuolaNext Python API
 #
-# Copyright (c) 2018 The ArgoScuolaNext Python API Authors (see AUTHORS)
+# Copyright (c) 2019 The ArgoScuolaNext Python API Authors (see AUTHORS)
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal

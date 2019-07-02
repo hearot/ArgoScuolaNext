@@ -20,15 +20,18 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""
-A client for the Argoscuolanext REST API.
-"""
+from argoscuolanext.session import Session
+import pytest
 
-from .errors import AuthenticationFailedError, NotLoggedInError
-from .session import Session
 
-__author__ = 'Hearot'
-__license__ = 'MIT LICENSE'
-__url__ = 'https://github.com/hearot/Argoscuolanext-Python'
-__package__ = 'argoscuolanext'
-__version__ = '2.0.0'
+@pytest.fixture
+def credentials(pytestconfig):
+    return (pytestconfig.getoption("school_code"),
+            pytestconfig.getoption("username"),
+            pytestconfig.getoption("password"))
+
+
+def test_login(credentials):
+    session = Session(*credentials)
+
+    assert session.logged_in
