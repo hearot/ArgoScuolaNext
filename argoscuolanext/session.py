@@ -123,7 +123,7 @@ class Session:
             headers={
                 "x-key-app": _argo_key,
                 "x-version": _argo_version,
-                "x-produttore-software": _produttore_software,
+                "x-produttore-software": _app_company,
                 "x-app-code": _app_code,
                 "user-agent": _user_agent,
                 "x-cod-min": school_code,
@@ -170,7 +170,7 @@ class Session:
                 "x-key-app": _argo_key,
                 "x-version": _argo_version,
                 "user-agent": _user_agent,
-                "x-produttore-software": _produttore_software,
+                "x-produttore-software": _app_company,
                 "x-app-code": _app_code,
                 "x-auth-token": self.information['authToken'],
                 "x-cod-min": self.information['codMin'],
