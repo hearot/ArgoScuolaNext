@@ -362,7 +362,7 @@ Example output:
 }
 ```
 
-### Class reminder
+### Class reminders
 
 You can call `promemoria` query by using `session.promemoria()` function.
 

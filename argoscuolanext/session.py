@@ -85,14 +85,13 @@ class Session:
         """
         Initialize the object and login the user.
 
-        :param school_code: Ministerial school code
+        :param school_code: The ministerial school code
         :type school_code: str
         :param username: The user's username
         :type username: str
         :param password: The user's password
         :type password: str
         """
-
         # Login request
         login_request = requests.get(
             url=_rest_api_endpoint + "login",
@@ -115,32 +114,8 @@ class Session:
         if login_request.status_code != requests.codes.ok:
             raise AuthenticationFailedError("Bad credentials or request.")
 
-        result = login_request.json()  # Decode the JSON result
-
-        # Get the information about the user
-        information_request = requests.get(
-            url=_rest_api_endpoint + "schede",
-            headers={
-                "x-key-app": _argo_key,
-                "x-version": _argo_version,
-                "x-produttore-software": _app_company,
-                "x-app-code": _app_code,
-                "user-agent": _user_agent,
-                "x-cod-min": school_code,
-                "x-auth-token": result['token']
-            },
-            params={
-                "_dc": round(time.time() * 1000)
-            }
-        )
-
-        # Error checking & handling
-        if information_request.status_code != requests.codes.ok:
-            raise AuthenticationFailedError("Bad credentials or request.")
-
-        information = information_request.json()  # Decode the JSON result
-        self.information = information[0]  # Get the user's information
-
+        self.information = self.get_information(school_code,
+                                                login_request.json()['token'])[0]  # Get the user's information
         self.logged_in = True  # The user is logged in
 
     def __call__(self, method: str, date: Optional[datetime.datetime] = datetime.datetime.now().strftime("%Y-%m-%d")) \
@@ -155,7 +130,6 @@ class Session:
         :return: The decode REST API response
         :rtype: Dict[Any, Any]
         """
-
         # Check that the user is logged in
         if not self.logged_in:
             raise NotLoggedInError("You must be logged in to use this method.")
@@ -200,7 +174,6 @@ class Session:
         :return: The function used to call the method.
         :rtype: Callable
         """
-
         # Create the function used to call the method
         def call_method(date: Optional[datetime.datetime] = datetime.datetime.now().strftime("%Y-%m-%d")) \
                 -> Dict[Any, Any]:
@@ -217,3 +190,67 @@ class Session:
             return self(method, date)
 
         return call_method  # Return the function
+
+    @staticmethod
+    def from_token(school_code: str, token: str) -> 'Session':
+        """
+        Create a session using a token and a school code.
+
+        :param school_code: The ministerial school code
+        :type school_code: str
+        :param token: The ArgoScuolaNext REST API token
+        :type token: str
+        :return: A session that represents an already logged in user
+        :rtype: Session
+        """
+        session = Session.__new__(Session)
+
+        session.information = session.get_information(school_code, token)[0]  # Get the user's information
+        session.logged_in = True  # The user is logged in
+
+        return session
+
+    @staticmethod
+    def get_information(school_code: str, token: str) -> Dict[Any, Any]:
+        """
+        It returns all the user's ArgoScuolaNext datas.
+
+        :param school_code: The ministerial school code
+        :type school_code: str
+        :param token: The ArgoScuolaNext REST API token
+        :type token: str
+        :return: The user's information
+        :rtype: Dict[Any, Any]
+        """
+        # Get the information about the user
+        information_request = requests.get(
+            url=_rest_api_endpoint + "schede",
+            headers={
+                "x-key-app": _argo_key,
+                "x-version": _argo_version,
+                "x-produttore-software": _app_company,
+                "x-app-code": _app_code,
+                "user-agent": _user_agent,
+                "x-cod-min": school_code,
+                "x-auth-token": token
+            },
+            params={
+                "_dc": round(time.time() * 1000)
+            }
+        )
+
+        # Error checking & handling
+        if information_request.status_code != requests.codes.ok:
+            raise AuthenticationFailedError("Bad credentials or request.")
+
+        return information_request.json()  # Decode the JSON result
+
+    @property
+    def token(self) -> str:
+        """
+        Returns the user's token
+
+        :return: The user's token
+        :rtype: str
+        """
+        return self.information['authToken']

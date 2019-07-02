@@ -20,26 +20,50 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from argoscuolanext.session import Session
+import datetime
 import pytest
 
-pytest.session = None
+
+def test_absences():
+    assert pytest.session.assenze() is not None
 
 
-@pytest.fixture
-def credentials(pytestconfig):
-    return (pytestconfig.getoption("school_code"),
-            pytestconfig.getoption("username"),
-            pytestconfig.getoption("password"))
+def test_class_reminders():
+    assert pytest.session.promemoria() is not None
 
 
-def test_login(credentials):
-    pytest.session = Session(*credentials)
-
-    assert pytest.session.logged_in
+def test_class_schedule():
+    assert pytest.session.orario() is not None
 
 
-def test_login_using_token(credentials):
-    pytest.session = Session.from_token(credentials[0], pytest.session.token)
+def test_disciplinary_notes():
+    assert pytest.session.notedisciplinari() is not None
 
-    assert pytest.session.logged_in
+
+def test_daily_marks():
+    assert pytest.session.votigiornalieri() is not None
+
+
+def test_final_marks():
+    assert pytest.session.votiscrutinio() is not None
+
+
+def test_homework():
+    assert pytest.session.compiti() is not None
+
+
+def test_lesson_topics():
+    assert pytest.session.votiscrutinio() is not None
+
+
+def test_teachers():
+    assert pytest.session.docenticlasse() is not None
+
+
+def test_today_activities():
+    assert pytest.session.oggi() is not None
+
+
+def test_yesterday_activities():
+    assert pytest.session.oggi((datetime.datetime.now() - datetime.timedelta(days=1)
+                                ).strftime("%Y-%m-%d")) is not None

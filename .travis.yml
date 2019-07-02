@@ -9,6 +9,7 @@ install:
 before_install:
 - pip install pycodestyle
 - pip install pytest
+- pip install -e .
 
 script:
 # Run pep8 on all .py files in all subfolders
