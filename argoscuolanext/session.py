@@ -40,22 +40,20 @@ _argo_version = "2.0.12"
 It represents the Argo REST API version.
 """
 
-_produttore_software = "ARGO Software s.r.l. - Ragusa"
-
 _app_code = "APF"
-
+"""
+The client code. Required since version 2.0.12
 """
 
-Strings containing information about the client, required since version 2.0.12
-
+_app_company = "ARGO Software s.r.l. - Ragusa"
 """
-
+The company that developed the Argo REST API. Required since version 2.0.12
+"""
 
 _rest_api_endpoint = "https://www.portaleargo.it/famiglia/api/rest/"
 """
 It represents the REST API endpoint.
 """
-
 
 _user_agent = ("Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 "
                "(KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36")
@@ -101,7 +99,7 @@ class Session:
             headers={
                 "x-key-app": _argo_key,
                 "x-version": _argo_version,
-                "x-produttore-software": _produttore_software,
+                "x-produttore-software": _app_company,
                 "x-app-code": _app_code,
                 "user-agent": _user_agent,
                 "x-cod-min": school_code,
