@@ -26,12 +26,12 @@ from distutils.core import setup
 setup(
     name='argoscuolanext',
     packages=['argoscuolanext'],
-    version='2.0.0',
+    version='2.0.1',
     description='A client for ArgoScuolaNext APIs',
     author='Gabriel Hearot',
     author_email='gabriel@hearot.it',
     url='https://github.com/hearot/ArgoScuolaNext-Python',
-    download_url='https://github.com/hearot/ArgoScuolaNext-Python/archive/v2.0.0.tar.gz',
+    download_url='https://github.com/hearot/ArgoScuolaNext-Python/archive/v2.0.1.tar.gz',
     keywords='argoscuolanext, python, school, api, rest',
     classifiers=[]
 )
