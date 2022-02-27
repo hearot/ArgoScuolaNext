@@ -27,7 +27,7 @@ import requests
 import time
 
 from json.decoder import JSONDecodeError
-from typing import Any, Callable, Dict, Optional
+from typing import Any, Callable, Dict, Optional, Union
 
 from .errors import AuthenticationFailedError, NotLoggedInError
 
@@ -138,18 +138,19 @@ class Session:
             self.information = self.get_information(school_code,
                                                     login_request.json()['token'],
                                                     version)[0]
+
         self.logged_in = True
         self.version = version
 
-    def __call__(self, method: str, date: Optional[datetime.datetime] = datetime.datetime.now().strftime("%Y-%m-%d")) \
+    def __call__(self, method: str, date: Optional[Union[datetime.datetime, str]] = None) \
             -> Dict[Any, Any]:
         """
         It calls an Argoscuolanext REST API method.
 
         :param method: The method you want to call.
         :type method: str
-        :param date: The date you want to use during the call.
-        :type date: datetime.datetime
+        :param date: The date you want to employ for the query.
+        :type date: Optional[Union[datetime.datetime, str]]
         :return: The decode REST API response
         :rtype: Dict[Any, Any]
         """
@@ -159,7 +160,10 @@ class Session:
             raise NotLoggedInError("You must be logged in to use this method.")
 
         if date is None:
-            date = datetime.datetime.now().strftime("%Y-%m-%d")
+            date = datetime.datetime.now()
+
+        if isinstance(date, datetime.datetime):
+            date = date.strftime("%Y-%m-%d")
 
         request = requests.get(
             url=_rest_api_endpoint + method,
