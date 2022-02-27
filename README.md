@@ -1,12 +1,17 @@
-# ArgoScuolaNext API
+# ArgoScuolaNext per Python
 
-Un programma che ti permette di utilizzare le API di ArgoScuolaNext per gestire e vedere le tue informazioni.
+Una libreria in Python che ti permette di utilizzare le API di ArgoScuolaNext per gestire e vedere le tue informazioni.
 
-[ArgoScuolaNext APIs in Php](https://github.com/hearot/ArgoScuolaNext)
+Se prediligi Node.js, [ReLoia/ArgoScuolaNext-NodeJS](https://github.com/ReLoia/ArgoScuolaNext-NodeJS) potrebbe fare al caso tuo.
 
-[ArgoScuolaNext APIs in Go](https://github.com/hearot/ArgoScuolaNext-go)
+### Disclaimer
 
-[English description of the client](README-en.md)
+Sebbene ad oggi questo progetto sia uno di quelli a cui sono più affezionato, purtroppo questa libreria non
+riceve né riceverà più alcun tipo di aggiornamento. L'impiego di questa libreria, inoltre, è contrario ai termini
+di servizio della piattaforma ArgoScuolaNext. Questo repository, non aggiornato, rimane tuttavia archiviato
+pubblicamente per scopi informativi.
+
+> Il token di autenticazione e i servizi restful invocati mediante esso, possono essere utilizzati solo dall'applicazione "DidUP - Famiglia" della Argo Software SRL per l’erogazione dei propri servizi o da fornitori saas e relative applicazioni appositamente preautorizzate, in conformità alla vigente normativa in maniera di protezione dei dati personali ed alle misure richieste dall’AgID per gli applicativi SaaS delle PA.
 
 ## Tabella dei contenuti
 
@@ -26,21 +31,16 @@ Un programma che ti permette di utilizzare le API di ArgoScuolaNext per gestire 
   - [3. Logout](#log-out)
 
 ## Installazione
-Puoi installare facilmente questo client di ArgoScuolaNext utilizzando PiP:
+Puoi installare facilmente questa libreria utilizzando Pip:
 
 ```bash
-pip install argoscuolanext
-```
-
-O, se vuoi aggiornare il modulo:
-
-```bash
-pip install --upgrade argoscuolanext
+pip install -U argoscuolanext
 ```
 
 ## Importare le API
 
 Devi usare `import argoscuolanext` per importare tutto il modulo.
+
 ```python
 import argoscuolanext
 ...
