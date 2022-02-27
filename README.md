@@ -60,7 +60,8 @@ Le API contemplano numerosi metodi, tra i quali i più importanti sono i seguent
 - `votigiornalieri`
 - `votiscrutinio`
 
-Per richiamare un metodo è sufficiente trattarlo come una funzione della classe `Session`.
+Per richiamare un metodo è sufficiente trattarlo come un metodo della classe `Session`.
+
 Alcuni metodi ammettono come parametro una data nel formato `yyyy-mm-dd` (o come istanza
 della classe `datetime.datetime`). Per esempio, per richiamare il metodo `oggi` nella
 data `2019-10-06` è sufficiente il seguente codice:
